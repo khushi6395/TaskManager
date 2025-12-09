@@ -23,7 +23,7 @@ public class  NewUser extends HttpServlet  {
 	        try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/User","****","*****");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/User","root","******");
 			PreparedStatement ps=con.prepareStatement("SELECT email FROM users WHERE email = ?");
 			ps.setString(1,eid);
 			ResultSet rs=ps.executeQuery();
@@ -50,11 +50,13 @@ public class  NewUser extends HttpServlet  {
 			           if(rows>0)
 			           {
 			        	  subj="Succesfully Registered";
-			        	  messag=" Congratulations "+" " +uname +" Welcome in Intellihire!";
+			        	  messag=" Congratulations "+" " +uname +" Welcome !";
 			        }
 		   }
 		}
 		  Mail.sendEmail(messag,subj,eid,from);
+		  RequestDispatcher rd = req.getRequestDispatcher("todo.html");
+		  rd.forward(req, res);
 		}
 		catch(Exception e)
 		{

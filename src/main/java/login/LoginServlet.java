@@ -16,16 +16,19 @@ public class  LoginServlet extends HttpServlet  {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/User","****","*****");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/User","root","******8");
 		    PreparedStatement ps=con.prepareStatement("Select username from users where email=? AND password=?");
 			ps.setString(1,eid);
 			ps.setString(2, pas);
 			ResultSet rs=ps.executeQuery();
 			if (rs.next()) {
 		        String name = rs.getString("username");
-		        out.println("<h3>Welcome, " + name + "!</h3>");
+		  
 		        String messag="Welcome Again!  "+" "+name;
 		        Mail.sendEmail(messag,"Welcome note",eid,from);
+		        
+		  	  RequestDispatcher rd = req.getRequestDispatcher("todo.html");
+			  rd.forward(req, res);
 		        
 		    } else {
 		        out.println("<h3>Invalid Email ID or Password.</h3>");}
