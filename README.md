@@ -30,5 +30,5 @@ Frontend ->	HTML, CSS
 Backend	->Java Servlets
 Database ->	MySQL
 Connectivity->	JDBC
-Server ->	Apache Tomcat
+Server ->	Apache Tomcat 10.0.27
 
