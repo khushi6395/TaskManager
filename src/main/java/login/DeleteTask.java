@@ -21,8 +21,8 @@ public class DeleteTask extends HttpServlet {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/todos",
-                    "root",
-                    "khushi123"
+                    "*****",
+                    "*******"
             );
 
             PreparedStatement ps = con.prepareStatement("DELETE FROM tasks WHERE id=?");
